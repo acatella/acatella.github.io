@@ -26,7 +26,7 @@
 <body>
   <div class="container-fluid flexbox-container">
     <div class="row col-xs-12 hero text-center">
-      <h4 class="text-center">Afi C. Clark</h4>
+      <h4 class="text-center" id="home-btn">Afi C. Clark</h4>
       <img src="http://acatella.github.io/assets/Afi-Mus.jpg" class="circle-img center-block" id="hero-photo">
       <h3 class="text-center"><p>I write front-end code for all types of web projects.</h3>
       <p>
@@ -46,7 +46,11 @@
 $(document).ready(function () {
 
   var photoArray = ['https://cloud.githubusercontent.com/assets/11893474/15102518/689ea0f6-1555-11e6-8d6a-107bae34c23e.jpg','https://cloud.githubusercontent.com/assets/11893474/15102524/79a7d930-1555-11e6-9c9c-4b7d75ff0d8b.jpg','https://cloud.githubusercontent.com/assets/11893474/15102527/82a7ff1a-1555-11e6-9c10-24963edb9444.jpg','https://cloud.githubusercontent.com/assets/11893474/15102534/8e02f3b0-1555-11e6-8d75-880cb7d1654f.jpg','https://cloud.githubusercontent.com/assets/11893474/15102542/a0a49794-1555-11e6-8562-86c465b88565.jpg','https://cloud.githubusercontent.com/assets/11893474/15102546/ae54a528-1555-11e6-87c7-0af02b6b4bff.jpg','https://cloud.githubusercontent.com/assets/11893474/15102552/ba9033b6-1555-11e6-86f6-2ed1d9487133.jpg','https://cloud.githubusercontent.com/assets/11893474/15102559/c435780e-1555-11e6-9f8e-253ee10653d4.jpg','https://cloud.githubusercontent.com/assets/11893474/15102570/d4653e94-1555-11e6-935f-a660c88e1020.jpg','https://cloud.githubusercontent.com/assets/11893474/15102574/ddc32e9c-1555-11e6-90a4-5d2b6085e7cf.jpg'];
-  // ['http://acatella.github.io/assets/young.JPG','http://acatella.github.io/assets/snow.JPG','https://cloud.githubusercontent.com/assets/11893474/15101677/7ada18b4-154a-11e6-99dd-4edffaa27a37.jpg','https://cloud.githubusercontent.com/assets/11893474/15101692/c234fe40-154a-11e6-8ff3-51aeaa5687b3.jpg','https://cloud.githubusercontent.com/assets/11893474/15101706/d9c69e4c-154a-11e6-8dd9-2f4b8aed18e9.jpg','https://cloud.githubusercontent.com/assets/11893474/15101712/e7dfe72c-154a-11e6-9d18-b70e92142b4a.jpg','https://cloud.githubusercontent.com/assets/11893474/15101718/fdfc4e56-154a-11e6-9494-e38b7b91c1b4.jpg','https://cloud.githubusercontent.com/assets/11893474/15101730/1024743c-154b-11e6-8c41-d079abe61ef9.jpg','https://cloud.githubusercontent.com/assets/11893474/15101736/1f0b6172-154b-11e6-8e45-569410973784.jpg','https://cloud.githubusercontent.com/assets/11893474/15101741/30878408-154b-11e6-9789-a32dd070d6c1.jpg','https://cloud.githubusercontent.com/assets/11893474/15101747/41694f04-154b-11e6-9d57-be134bd033dc.jpg'];
+
+  $('#home-btn').on('click',function(e) {
+    $('#hero-photo').attr('src', 'http://acatella.github.io/assets/Afi-Mus.jpg');
+  });
+
   $('#hero-photo').on('click',function(e) {
     var currentPhotoEl = $('#hero-photo');
     var currentPhoto = currentPhotoEl.attr('src');

@@ -25,7 +25,7 @@ img.circle-img {
   width: 120px;
 }
 
-img.circle-img:hover {
+img.circle-img:hover, #home-btn:hover {
   cursor: pointer;
 }
 /* Layout */
