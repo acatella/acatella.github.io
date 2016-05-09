@@ -1,0 +1,50 @@
+/*Placeholder Stylesheet*/
+
+
+/* Flex styling for vertical centering*/
+
+.flexbox-container {
+  display: flex;
+  align-items: center;
+
+  min-height: 100%; /* backup for browsers that don't support vh */
+  min-height: 100vh;
+  min-width: 330px;
+}
+
+/* Sectional Style */
+div.hero {
+  max-width: 400px;
+  float: none;
+  margin: 0 auto;
+}
+
+img.circle-img {
+  border-radius: 50%;
+  height: 120px;
+  width: 120px;
+}
+
+img.circle-img:hover {
+  cursor: pointer;
+}
+/* Layout */
+
+h4 {
+  margin-bottom: 40px;
+  color: #ccc;
+  text-transform: uppercase;
+  letter-spacing: 1.1px;
+  word-spacing: -2px;
+}
+
+h3 {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+/* Font and Color */
+
+h4, h3, p {
+  font-family: 'Open Sans', sans-serif;
+}

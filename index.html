@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Afi CC &middot; Web Development</title>
+
+  <!-- Libraries -->
+  <link rel="Stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+  
+
+  <!-- Fonts  -->
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+
+  <!-- Custom CSS -->
+  <link rel="Stylesheet" href="style.css">
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="container-fluid flexbox-container">
+    <div class="row col-xs-12 hero text-center">
+      <h4 class="text-center">Afi C. Clark</h4>
+      <img src="http://acatella.github.io/assets/Afi-Mus.jpg" class="circle-img center-block" id="hero-photo">
+      <h3 class="text-center"><p>I write front-end code for all types of web projects.</h3>
+      <p>
+        My site is getting refreshed, but you can <a href="mailto:aficclark@gmail.com">email</a> me about a project or just to chat.
+      </p>
+      <p>
+        Dog lover? Click the photo above to see more of my dog, Musubi.</a>
+      </p>
+    </div>
+  </div>
+
+<!-- Libraries -->
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/jquery-ui/jquery-ui.min.js"></script>
+<script>
+
+$(document).ready(function () {
+
+  var photoArray = ['http://acatella.github.io/assets/young.JPG','http://acatella.github.io/assets/snow.JPG','https://cloud.githubusercontent.com/assets/11893474/15101677/7ada18b4-154a-11e6-99dd-4edffaa27a37.jpg','https://cloud.githubusercontent.com/assets/11893474/15101692/c234fe40-154a-11e6-8ff3-51aeaa5687b3.jpg','https://cloud.githubusercontent.com/assets/11893474/15101706/d9c69e4c-154a-11e6-8dd9-2f4b8aed18e9.jpg','https://cloud.githubusercontent.com/assets/11893474/15101712/e7dfe72c-154a-11e6-9d18-b70e92142b4a.jpg','https://cloud.githubusercontent.com/assets/11893474/15101718/fdfc4e56-154a-11e6-9494-e38b7b91c1b4.jpg','https://cloud.githubusercontent.com/assets/11893474/15101730/1024743c-154b-11e6-8c41-d079abe61ef9.jpg','https://cloud.githubusercontent.com/assets/11893474/15101736/1f0b6172-154b-11e6-8e45-569410973784.jpg','https://cloud.githubusercontent.com/assets/11893474/15101741/30878408-154b-11e6-9789-a32dd070d6c1.jpg','https://cloud.githubusercontent.com/assets/11893474/15101747/41694f04-154b-11e6-9d57-be134bd033dc.jpg'];
+  // ,'http://acatella.github.io/assets/wet.jpg','http://acatella.github.io/assets/tucked.jpg','http://acatella.github.io/assets/grass.jpg','http://acatella.github.io/assets/face.jpg','http://acatella.github.io/assets/couch.jpg','http://acatella.github.io/assets/pattern.jpg','http://acatella.github.io/assets/view.jpg','http://acatella.github.io/assets/hike.jpg'
+  $('#hero-photo').on('click',function(e) {
+    var currentPhotoEl = $('#hero-photo');
+    var currentPhoto = currentPhotoEl.attr('src');
+
+    var randomNumber = 0;
+    var newPhoto = '';
+
+    function updatePhoto() {
+      randomNumber = Math.floor(Math.random() * photoArray.length);
+      newPhoto = photoArray[randomNumber];
+      photoArray.splice(randomNumber,1,currentPhoto);
+      currentPhotoEl.attr('src',newPhoto);
+    }
+
+    updatePhoto();
+
+    currentPhotoEl.addClass('animated pulse');
+    currentPhotoEl.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+      currentPhotoEl.removeClass('animated pulse');
+    });
+  })
+});
+</script>
+</body>
+</html>
