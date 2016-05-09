@@ -40,7 +40,6 @@
 
 <!-- Libraries -->
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
-<script src="bower_components/jquery-ui/jquery-ui.min.js"></script>
 <script>
 
 $(document).ready(function () {
@@ -48,28 +47,42 @@ $(document).ready(function () {
   var photoArray = ['https://cloud.githubusercontent.com/assets/11893474/15102518/689ea0f6-1555-11e6-8d6a-107bae34c23e.jpg','https://cloud.githubusercontent.com/assets/11893474/15102524/79a7d930-1555-11e6-9c9c-4b7d75ff0d8b.jpg','https://cloud.githubusercontent.com/assets/11893474/15102527/82a7ff1a-1555-11e6-9c10-24963edb9444.jpg','https://cloud.githubusercontent.com/assets/11893474/15102534/8e02f3b0-1555-11e6-8d75-880cb7d1654f.jpg','https://cloud.githubusercontent.com/assets/11893474/15102542/a0a49794-1555-11e6-8562-86c465b88565.jpg','https://cloud.githubusercontent.com/assets/11893474/15102546/ae54a528-1555-11e6-87c7-0af02b6b4bff.jpg','https://cloud.githubusercontent.com/assets/11893474/15102552/ba9033b6-1555-11e6-86f6-2ed1d9487133.jpg','https://cloud.githubusercontent.com/assets/11893474/15102559/c435780e-1555-11e6-9f8e-253ee10653d4.jpg','https://cloud.githubusercontent.com/assets/11893474/15102570/d4653e94-1555-11e6-935f-a660c88e1020.jpg','https://cloud.githubusercontent.com/assets/11893474/15102574/ddc32e9c-1555-11e6-90a4-5d2b6085e7cf.jpg'];
 
   $('#home-btn').on('click',function(e) {
-    $('#hero-photo').attr('src', 'http://acatella.github.io/assets/Afi-Mus.jpg');
+    refreshPhotos();
   });
 
+  // Sets array and hero-image back to their defaults
+  function refreshPhotos() {
+    $('#hero-photo').attr('src','http://acatella.github.io/assets/Afi-Mus.jpg');
+    photoArray = ['https://cloud.githubusercontent.com/assets/11893474/15102518/689ea0f6-1555-11e6-8d6a-107bae34c23e.jpg','https://cloud.githubusercontent.com/assets/11893474/15102524/79a7d930-1555-11e6-9c9c-4b7d75ff0d8b.jpg','https://cloud.githubusercontent.com/assets/11893474/15102527/82a7ff1a-1555-11e6-9c10-24963edb9444.jpg','https://cloud.githubusercontent.com/assets/11893474/15102534/8e02f3b0-1555-11e6-8d75-880cb7d1654f.jpg','https://cloud.githubusercontent.com/assets/11893474/15102542/a0a49794-1555-11e6-8562-86c465b88565.jpg','https://cloud.githubusercontent.com/assets/11893474/15102546/ae54a528-1555-11e6-87c7-0af02b6b4bff.jpg','https://cloud.githubusercontent.com/assets/11893474/15102552/ba9033b6-1555-11e6-86f6-2ed1d9487133.jpg','https://cloud.githubusercontent.com/assets/11893474/15102559/c435780e-1555-11e6-9f8e-253ee10653d4.jpg','https://cloud.githubusercontent.com/assets/11893474/15102570/d4653e94-1555-11e6-935f-a660c88e1020.jpg','https://cloud.githubusercontent.com/assets/11893474/15102574/ddc32e9c-1555-11e6-90a4-5d2b6085e7cf.jpg'];
+  };
+
   $('#hero-photo').on('click',function(e) {
+
     var currentPhotoEl = $('#hero-photo');
     var currentPhoto = currentPhotoEl.attr('src');
-
     var randomNumber = 0;
     var newPhoto = '';
 
+    // Updates the hero photo with a random picture from photoArray
     function updatePhoto() {
       randomNumber = Math.floor(Math.random() * photoArray.length);
       newPhoto = photoArray[randomNumber];
-      photoArray.splice(randomNumber,1,currentPhoto);
+      photoArray.splice(randomNumber,1);
       currentPhotoEl.attr('src',newPhoto);
     }
 
-    updatePhoto();
+    if (photoArray.length == 0) {
+      refreshPhotos();
+    }
 
+    else {
+      updatePhoto();
+    }
+
+    // Triggers animation on click
     currentPhotoEl.addClass('animated pulse');
-    currentPhotoEl.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
-      currentPhotoEl.removeClass('animated pulse');
+    currentPhotoEl.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() { // Checks when animation is finished
+      currentPhotoEl.removeClass('animated pulse'); // Removes animation class so it can be triggered again
     });
   })
 });
